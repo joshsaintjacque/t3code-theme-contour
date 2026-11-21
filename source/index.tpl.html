@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contour · a theme for T3 Code</title>
+<meta name="description" content="A topographic survey theme for T3 Code. While your agent works the contours shift elevation; when the turn ends, a survey pin is driven into the summit.">
+<meta name="theme-color" content="#f3edda">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contour · a theme for T3 Code">
+<meta property="og:description" content="The land moves while your agent works. A survey pin marks it done. A field-sheet theme for T3 Code.">
+<meta property="og:url" content="__SITE__">
+<meta property="og:image" content="__SITE__assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contour · a theme for T3 Code">
+<meta name="twitter:image" content="__SITE__assets/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f3edda'/%3E%3Cpath d='M2 22c6-12 12-14 28-10M2 28c8-14 16-16 28-12M6 14c4-6 10-8 20-6' fill='none' stroke='%23b87345' stroke-width='1.6'/%3E%3Ccircle cx='21' cy='13' r='4' fill='%23c0401a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..700&family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f3edda; --paper-2:#ece4cd; --paper-3:#e7dec2; --raised:#fbf8ee;
+  --ink:#2b2519; --muted:#61563f; --line:#cdbf9a; --line-2:rgba(143,100,60,.32);
+  --sienna:#b87345; --sienna-d:#8f4a28; --hydro:#2f7396; --sage:#6b8a4a; --orange:#c0401a;
+  --serif:"Fraunces","Iowan Old Style",Palatino,Georgia,serif;
+  --sans:"Figtree","Avenir Next",system-ui,sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --gutter:clamp(16px,4vw,56px); --maxw:1180px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.62 var(--sans);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cpath d='M48 41v14M41 48h14' stroke='%238f4a28' stroke-opacity='.3' fill='none'/%3E%3C/svg%3E") 0 0/96px 96px,
+  radial-gradient(ellipse 60% 40% at 90% 10%,rgba(212,168,108,.22),transparent),radial-gradient(ellipse 50% 40% at 5% 80%,rgba(120,150,84,.16),transparent)}
+a{color:#1d5f82;text-decoration-style:dotted;text-underline-offset:3px}
+a:hover{color:var(--orange)}
+::selection{background:rgba(192,64,26,.25)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+img,video{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+
+/* masthead */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0}
+.mark{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font:600 13px/1 var(--mono);letter-spacing:.22em}
+.mark svg{width:26px;height:26px}
+nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+nav a{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:9px 10px;border-radius:2px}
+nav a:hover{color:var(--ink);background:rgba(143,100,60,.12)}
+nav .gh{display:flex;gap:8px;align-items:center;border:1px solid var(--line-2)}
+nav .gh svg{width:15px;height:15px;fill:currentColor}
+
+/* hero */
+.hero{position:relative;padding:clamp(24px,5vw,56px) 0 20px}
+.map{position:absolute;inset:-70px calc(50% - 50vw) 0 38%;z-index:-1;background:url(assets/svg/terrain.svg) 100% 0/contain no-repeat;opacity:.85;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 30%),linear-gradient(180deg,transparent 96px,#000 190px,#000 50%,transparent);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent,#000 30%),linear-gradient(180deg,transparent 96px,#000 190px,#000 50%,transparent);mask-composite:intersect}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--sienna-d)}
+.eyebrow b{color:var(--orange);font-weight:500}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px 14px}.eyebrow span{white-space:nowrap}.eyebrow i{font-style:normal;color:var(--sienna)}
+@media(max-width:560px){.eyebrow i{display:none}.eyebrow{gap:8px 0;flex-direction:column}}
+h1{font:400 clamp(60px,13vw,176px)/.9 var(--serif);font-variation-settings:"opsz" 144;letter-spacing:-.035em;margin:14px 0 0}
+h1 em{font-style:italic;color:var(--sienna-d)}
+.lede{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,5vw,72px);align-items:end;margin-top:26px}
+.lede h2{font:400 clamp(24px,3.2vw,38px)/1.18 var(--serif);margin:0;letter-spacing:-.01em}
+.lede h2 em{color:var(--orange);font-style:italic}
+.lede p{margin:0 0 6px -28px;color:var(--muted);max-width:50ch;padding:22px 28px;background:radial-gradient(ellipse 75% 70% at 45% 50%,rgba(243,237,218,.96) 55%,rgba(243,237,218,0) 100%)}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;gap:10px;align-items:center;font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:14px 18px;border-radius:2px;border:1px solid var(--ink);cursor:pointer;background:var(--paper);color:var(--ink)}
+.btn svg{width:13px;height:13px}
+.btn.primary{background:var(--orange);border-color:#7c2208;color:#fff8ee}
+.btn.primary:hover{background:#a93513;color:#fff8ee}
+.btn:hover{background:var(--paper-3);color:var(--ink)}
+
+/* map plate: the hero film */
+.plate{position:relative;margin:40px 0 0;border:1px solid var(--ink);padding:8px;background:var(--raised);box-shadow:0 0 0 5px var(--paper),0 0 0 6px var(--line-2),0 30px 50px -30px rgba(60,40,15,.45)}
+.plate video{width:100%;height:auto;background:var(--paper-2)}
+.plate .tag{position:absolute;font:500 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;background:var(--paper);border:1px solid var(--ink);padding:6px 8px;color:var(--ink)}
+.plate .tag.a{left:-1px;top:-14px}
+.plate .tag.b{right:-1px;bottom:-14px;color:var(--orange);border-color:var(--orange)}
+.balloon{position:absolute;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--orange);color:#fff8ee;font:500 12px/1 var(--mono);border:2px solid var(--paper);box-shadow:0 2px 6px rgba(60,40,15,.35);transform:translate(-50%,-50%);cursor:default;transition:transform .2s}
+.balloon:hover,.balloon.hot{transform:translate(-50%,-50%) scale(1.25)}
+.legend{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 28px;counter-reset:b}
+.legend li{display:flex;gap:12px;padding:14px 0;border-top:1px dotted var(--line-2);font-size:15px;color:var(--muted)}
+.legend li:before{counter-increment:b;content:counter(b);flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--orange);color:#fff8ee;font:500 11px/1 var(--mono);margin-top:2px}
+.legend li.hot{color:var(--ink)}
+.legend b{color:var(--ink);font-weight:600}
+
+section{padding:clamp(56px,9vw,110px) 0 0}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--sienna-d);display:flex;gap:14px;align-items:center}
+.kicker:after{content:"";flex:1;height:0;border-top:1px dotted var(--line-2)}
+h3.big{font:400 clamp(32px,5vw,58px)/1.04 var(--serif);letter-spacing:-.022em;margin:14px 0 0;max-width:20ch}
+h3.big em{font-style:italic;color:var(--sienna-d)}
+.sub{color:var(--muted);max-width:60ch;margin:16px 0 0}
+
+/* what moves */
+.moves{margin:36px 0 0;border:1px solid var(--ink);background:rgba(251,248,238,.9)}
+.mv{display:grid;grid-template-columns:150px 1.1fr 1.6fr;gap:22px;padding:18px 22px;border-top:1px dotted var(--line-2);align-items:baseline}
+.mv:first-child{border-top:0}
+.mv .st{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.mv .st.q{color:var(--hydro)}
+.mv h4{margin:0;font:600 18px/1.25 var(--serif);letter-spacing:-.005em}
+.mv p{margin:0;color:var(--muted);font-size:15.5px}
+.mv.head{background:var(--paper-3);padding:11px 22px;font:500 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--sienna-d)}
+.mv.head span{display:block}
+
+/* demo */
+.demo .plate{margin-top:34px}
+
+/* palette */
+.pal{margin:34px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 34px}
+.sw{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;padding:11px 0;border-top:1px dotted var(--line-2);cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;font:inherit;color:inherit;width:100%}
+.sw:hover{background:rgba(143,100,60,.07)}
+.sw i{display:block;width:44px;height:30px;border:1px solid rgba(43,37,25,.45);border-radius:2px}
+.sw b{font:600 15px/1.2 var(--sans)}.sw small{display:block;font:400 13px/1.3 var(--sans);color:var(--muted);margin-top:2px}
+.sw code{font:500 13px/1 var(--mono);letter-spacing:.04em;color:var(--sienna-d)}
+.sw.copied code{color:var(--orange)}
+.note{margin:20px 0 0;color:var(--muted);font-size:15px;max-width:66ch}
+
+/* install */
+.inst{margin:34px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.card{min-width:0;border:1px solid var(--ink);background:rgba(251,248,238,.92);padding:24px;position:relative}
+.card h4{margin:0 0 4px;font:600 22px/1.2 var(--serif)}
+.card ol{margin:14px 0 18px;padding-left:20px;color:var(--muted);font-size:15.5px}
+.card li{margin:4px 0}
+.card li b{color:var(--ink);font-weight:600}
+pre{margin:14px 0 0;padding:14px 16px;background:#ebe3c9;border:1px solid rgba(143,100,60,.3);border-left:3px solid var(--sage);border-radius:2px;overflow-x:auto;font:400 13px/1.65 var(--mono);color:#3b3020;position:relative}
+pre .p{color:var(--sienna-d)}
+.copy{position:absolute;top:8px;right:8px;font:500 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;background:var(--paper);border:1px solid var(--line-2);padding:6px 8px;cursor:pointer;color:var(--muted)}
+.copy:hover{color:var(--ink)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{margin-top:clamp(70px,10vw,120px);border-top:1px solid var(--ink);background:var(--paper-3)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;padding-top:28px;padding-bottom:36px;font-size:14px;color:var(--muted)}
+footer b{color:var(--ink)}
+.scale{display:flex;align-items:center;gap:8px;font:500 10px/1 var(--mono);letter-spacing:.12em;color:var(--muted)}
+.scale i{display:block;width:120px;height:6px;border:1px solid var(--ink);background:linear-gradient(90deg,var(--ink) 25%,transparent 25% 50%,var(--ink) 50% 75%,transparent 75%)}
+
+#toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:var(--paper);font:500 12px/1 var(--mono);letter-spacing:.1em;padding:12px 16px;border-radius:2px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+
+.rise{opacity:0;transform:translateY(14px);animation:rise .8s var(--d,0s) cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in,.no-io .reveal{opacity:1;transform:none}
+
+@media (max-width:560px){.plate video{aspect-ratio:1/1;object-fit:cover;object-position:30% 50%}}
+@media (max-width:900px){
+  .lede{grid-template-columns:1fr}
+  .legend{grid-template-columns:1fr}
+  .mv{grid-template-columns:1fr;gap:6px}
+  .mv.head{display:none}
+  .pal{grid-template-columns:1fr}
+  .inst{grid-template-columns:minmax(0,1fr)}
+  .map{left:0;opacity:.4}
+  .balloon{display:none}
+  nav a:not(.gh){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rise,.reveal{animation:none!important;opacity:1;transform:none;transition:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top" aria-label="Contour home">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><path d="M1 19c5-10 10-12 24-8M1 24c6-11 13-13 24-9M5 11c3-5 8-7 16-5" fill="none" stroke="#b87345" stroke-width="1.5"/><circle cx="17" cy="10" r="3.4" fill="#c0401a"/></svg>
+      CONTOUR
+    </a>
+    <nav aria-label="Primary">
+      <a href="#moves">What moves</a>
+      <a href="#watch">Watch</a>
+      <a href="#palette">Palette</a>
+      <a href="#install">Install</a>
+      <a class="gh" href="https://github.com/joshsaintjacque/t3code-theme-contour"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="map" aria-hidden="true"></div>
+      <div class="eyebrow rise" style="--d:.1s"><span>Field sheet 20</span><i>·</i><span>A theme for <b>T3 Code</b></span><i>·</i><span>Light</span></div>
+      <h1 class="rise" style="--d:.2s">Con<em>tour</em></h1>
+      <div class="lede">
+        <h2 class="rise" style="--d:.45s">The land moves while your agent works. <em>A pin marks it done.</em></h2>
+        <div class="rise" style="--d:.6s">
+          <p>A survey field-sheet theme for T3 Code. Warm paper, sienna contours and one survey-orange for things that need you. During a turn the contours in the margins shift elevation; when it ends, a survey pin is driven into the summit and everything holds still.</p>
+          <div class="ctas">
+            <a class="btn primary" href="#install">Install Contour <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v10M2.5 6.5 7 11l4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+            <a class="btn" href="#watch">Watch the demo <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 1.5v11l9-5.5z" fill="currentColor"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="plate rise" style="--d:.8s">
+        <span class="tag a">Live turn · 1:1</span>
+        <span class="tag b">Contour interval 50 m</span>
+        <video id="hero" muted loop playsinline preload="auto" poster="assets/hero.jpg" aria-label="T3 Code in the Contour theme mid-turn: contour lines in the margins shift elevation while the agent works">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <span class="balloon" data-b="1" style="left:21%;top:22%">1</span>
+        <span class="balloon" data-b="2" style="left:85%;top:22%">2</span>
+        <span class="balloon" data-b="3" style="left:14.4%;top:3.4%">3</span>
+        <span class="balloon" data-b="4" style="left:28.5%;top:38%">4</span>
+        <span class="balloon" data-b="5" style="left:77.6%;top:83%">5</span>
+        <span class="balloon" data-b="6" style="left:7.5%;top:85.5%">6</span>
+      </div>
+      <ol class="legend" id="legend">
+        <li data-b="1"><span><b>Shifting contours.</b> Three elevations of the same terrain, each held for about three seconds. The gutters dim a little, step one level and come back, so labels never blur into each other. Streams and marks stay put.</span></li>
+        <li data-b="2"><span><b>Streams run downhill.</b> They are traced by steepest descent from the same height field, so they cross the lines at right angles.</span></li>
+        <li data-b="3"><span><b>Survey stake.</b> A stake walks an elevation profile along the header for the length of the turn.</span></li>
+        <li data-b="4"><span><b>Theodolite.</b> The pin lifts away and an orange reticle marks the summit.</span></li>
+        <li data-b="5"><span><b>Working row.</b> The live row gets hachure ticks, the survey mark for a hollow.</span></li>
+        <li data-b="6"><span><b>Legend.</b> A slim scale strip, docked low in the sidebar above Settings, clear of the thread list. On narrow windows it becomes a small map strip with the pin.</span></li>
+      </ol>
+    </div>
+
+    <section id="moves" class="reveal">
+      <div class="kicker">Sheet 02 · What moves, and why</div>
+      <h3 class="big">If nothing is running, <em>nothing moves.</em></h3>
+      <p class="sub">Every animation is keyed to real app state. Idle is a still map with a pin in it. That is on purpose: you read all day, and a calm map is the right background for it.</p>
+      <div class="moves">
+        <div class="mv head"><span>State</span><span>What you see</span><span>Why</span></div>
+        <div class="mv"><span class="st q">Idle</span><h4>A still sheet, pin planted</h4><p>Contours, labels, streams and a pin on the summit. Nothing animates.</p></div>
+        <div class="mv"><span class="st">Turn running</span><h4>The contours shift elevation</h4><p>Ping-pong through three terrain frames on a 15 second cycle. Each is held for about three seconds; the contour layer dims to 60%, steps and returns, while streams, marks and names stay still. After two cycles (30 seconds) it settles: one elevation held, breathing slowly, so a long turn stays calm.</p></div>
+        <div class="mv"><span class="st">Turn running</span><h4>Reticle and walking stake</h4><p>The instrument takes over from the pin: a reticle marks the summit and a stake walks the header's elevation profile.</p></div>
+        <div class="mv"><span class="st">Thread busy</span><h4>A survey line sweeps the row</h4><p>Any thread with an agent on it gets an orange line sweeping along the foot of its row, clear of the title and time. You can see background work at a glance.</p></div>
+        <div class="mv"><span class="st">Turn complete</span><h4>The pin drops</h4><p>A survey pin falls onto the summit, bounces and lands, with a ripple. It plays when a turn ends, never on load. Switching away from a running thread can trigger it too. It is the one flourish, and it means "done".</p></div>
+        <div class="mv"><span class="st q">Hover</span><h4>Contour rings on the row</h4><p>A few static rings fade in from the right edge of a thread row, as if the pointer were a hill.</p></div>
+        <div class="mv"><span class="st q">Composer focus</span><h4>The neatline lights up</h4><p>The composer is framed like a map neatline; focus turns the outer line survey-orange.</p></div>
+        <div class="mv"><span class="st q">Narrow window</span><h4>The scale strip becomes a map strip</h4><p>Below 1460px the gutters are thin, so the margins keep soft, label-free contour lines and the sidebar foot shows a small map strip: pin planted at rest, reticle while a turn runs.</p></div>
+      </div>
+      <p class="note">With <code>prefers-reduced-motion</code>, every animation and transition stops and the sheet shows its idle still, in both the theme and this page.</p>
+    </section>
+
+    <section id="watch" class="demo reveal">
+      <div class="kicker">Sheet 03 · In the field</div>
+      <h3 class="big">One turn, <em>start to pin.</em></h3>
+      <div class="plate">
+        <video id="demo" controls playsinline preload="metadata" poster="assets/demo.jpg" aria-label="Captioned walkthrough of the Contour theme: at rest, compose, a turn runs, a background thread, the pin drops, hover, and the narrow layout">
+          <source src="assets/demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <section id="palette" class="reveal">
+      <div class="kicker">Sheet 04 · Palette</div>
+      <h3 class="big">Paper, ink, <em>one orange.</em></h3>
+      <p class="sub">Paper is the field sheet and ink is the pencil. Orange is the only loud colour, and it is saved for focus, send and work in progress. Click a row to copy its hex.</p>
+      <div class="pal" id="pal">
+__PALETTE__
+      </div>
+      <p class="note">Every value here is read straight from <code>contour.json</code> at build time. The sienna contours, hydro-blue water and sage stripe are drawn in the art, so they are not roles.</p>
+    </section>
+
+    <section id="install" class="reveal">
+      <div class="kicker">Sheet 05 · Install</div>
+      <h3 class="big">Two ways <em>in.</em></h3>
+      <div class="inst">
+        <div class="card">
+          <h4>From the app</h4>
+          <ol>
+            <li>Copy the theme JSON, or download <b>contour.json</b>.</li>
+            <li>In T3 Code open <b>Settings › Appearance › Add theme</b>.</li>
+            <li>Paste the JSON, or choose the file, and add it.</li>
+          </ol>
+          <div class="btns">
+            <button class="btn primary" id="copyjson" type="button">Copy theme JSON</button>
+            <a class="btn" href="contour.json" download>Download</a>
+          </div>
+        </div>
+        <div class="card">
+          <h4>From the terminal</h4>
+          <pre><button class="copy" type="button" data-copy="#cli">Copy</button><code id="cli">curl -fsSL -o contour.json __SITE__contour.json
+~/.t3/bin/t3 theme set contour.json</code></pre>
+          <p class="note" style="margin-top:14px">That publishes the file and sets it as the environment theme, so every client on that environment switches. Tested on T3 Code 0.1.11 (nightly).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div><b>Contour</b> · MIT licence · <a href="https://github.com/joshsaintjacque/t3code-theme-contour">source and build script</a></div>
+    <div>Not affiliated with, or endorsed by, T3. A community theme for T3 Code.</div>
+    <div class="scale" aria-hidden="true"><i></i>0 · 500 m</div>
+  </div>
+</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+
+  const hero = $('#hero');
+  if (reduce) hero.poster = 'assets/screenshot.jpg';
+  else new IntersectionObserver(([e]) => { if (e.isIntersecting) hero.play().catch(() => {}); else hero.pause(); }, { threshold: .15 }).observe(hero);
+
+  const hot = (b, on) => $$(`[data-b="${b}"]`).forEach(el => el.classList.toggle('hot', on));
+  $$('[data-b]').forEach(el => { el.addEventListener('pointerenter', () => hot(el.dataset.b, true)); el.addEventListener('pointerleave', () => hot(el.dataset.b, false)); });
+
+  if ('IntersectionObserver' in window && !reduce) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    $$('.reveal').forEach(el => io.observe(el));
+  } else { $$('.reveal').forEach(el => el.classList.add('in')); root.classList.add('no-io'); }
+
+  const toast = $('#toast'); let tt;
+  const say = m => { toast.textContent = m; toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('on'), 2200); };
+  const flash = (btn, cls) => { btn.classList.add(cls); setTimeout(() => btn.classList.remove(cls), 1200); };
+  const copy = async text => {
+    try { await navigator.clipboard.writeText(text); return true; }
+    catch (e) {
+      try { const t = document.createElement('textarea'); t.value = text; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.appendChild(t); t.select(); const ok = document.execCommand('copy'); document.body.removeChild(t); return ok; }
+      catch (e2) { return false; }
+    }
+  };
+  $$('.sw').forEach(b => b.addEventListener('click', async () => { if (await copy(b.dataset.hex)) { say('Copied ' + b.dataset.hex); flash(b, 'copied'); } else say('Could not copy. Select the hex by hand.'); }));
+  $$('.copy').forEach(b => b.addEventListener('click', async () => { if (await copy($(b.dataset.copy).textContent)) say('Copied command'); else say('Could not copy the command.'); }));
+  // fetch the theme JSON up front so the click can hand the clipboard a promise (Safari wants the write inside the gesture)
+  const jsonText = fetch('contour.json').then(r => { if (!r.ok) throw new Error('http ' + r.status); return r.text(); });
+  jsonText.catch(() => {});
+  $('#copyjson').addEventListener('click', async () => {
+    try {
+      if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+        await navigator.clipboard.write([new ClipboardItem({ 'text/plain': jsonText.then(t => new Blob([t], { type: 'text/plain' })) })]);
+      } else if (!(await copy(await jsonText))) throw new Error('copy');
+      say('Theme JSON copied. Paste it into Add theme.');
+    } catch (e) { say('Could not copy. Use Download instead.'); }
+  });
+})();
+</script>
+</body>
+</html>
